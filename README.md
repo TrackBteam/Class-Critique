@@ -1,1 +1,1 @@
-# Class-Critique
+# Class Critique
