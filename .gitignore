@@ -1,1 +1,10 @@
-node_modules
+# Node modules
+node_modules/
+
+# Environment variables
+.env.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
