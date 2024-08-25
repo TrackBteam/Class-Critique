@@ -68,12 +68,46 @@ export default function Dashboard() {
   };
 
   const sendMessage = async () => {
-    setMessage('');
+    if (message.trim() === '') return; // Prevent empty messages
+  
     setMessages((prevMessages) => [
       ...prevMessages,
       { role: 'user', content: message },
-      { role: 'assistant', content: '' },
+      { role: 'assistant', content: '...' },
     ]);
+    
+    setMessage('');
+  
+    try {
+      const res = await fetch('/api/geminiHandler', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query: message }),
+      });
+  
+      const data = await res.json();
+      
+      // Replace the loading dots with the response from the Gemini API
+      setMessages((prevMessages) => {
+        let lastMessage = prevMessages[prevMessages.length - 1];
+        let otherMessages = prevMessages.slice(0, prevMessages.length - 1);
+        return [
+          ...otherMessages,
+          { ...lastMessage, content: data.result }, // Use the Gemini API's response
+        ];
+      });
+  
+    } catch (error) {
+      console.error('Error querying Gemini API:', error);
+      
+      setMessages((prevMessages) => [
+        ...prevMessages,
+        { role: 'assistant', content: 'Sorry, there was an error. Please try again.' },
+      ]);
+    }
+  };
 
     const response = fetch('/api/chat', {
       method: 'POST',
