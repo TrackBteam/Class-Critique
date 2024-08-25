@@ -1,4 +1,4 @@
-// File: C:\Users\PCS\Documents\GitHub\AI-RateMyProfessor\Class-Critique\app\signup\page.js
+// File: E:\code\Professor project\Class-Critique\app\signup\page.js
 import * as entry from '../../../../app/signup/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

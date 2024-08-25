@@ -1,4 +1,4 @@
-// File: C:\Users\PCS\Documents\GitHub\AI-RateMyProfessor\Class-Critique\app\layout.js
+// File: E:\code\Professor project\Class-Critique\app\layout.js
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
